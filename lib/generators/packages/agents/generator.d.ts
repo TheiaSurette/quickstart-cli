@@ -12,6 +12,7 @@ export declare class AgentRulesGenerator {
     private templateParams;
     constructor(config: ProjectConfig, outputDir: string);
     generate(): Promise<void>;
+    private generateRootAgentFiles;
     private createDirectoryStructure;
     private generateClaudeRules;
     private generateCursorRules;

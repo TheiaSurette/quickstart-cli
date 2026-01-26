@@ -9,6 +9,11 @@ alwaysApply: false
 ## PROJECT CONTEXT
 This is a CLI tool for generating project boilerplates with TypeScript, Python (FastAPI), and React/Next.js templates.
 
+## IMPORTANT: No Dev Servers
+**Never run dev servers or production builds.** Assume a dev server is already running. Only use validation commands:
+- `pnpm test` - Run unit tests
+- `pnpm build` - Type check via tsc
+
 ## CLI-SPECIFIC CONVENTIONS
 - Use **Ink (React for CLIs)** for rich interactive terminal UIs with real-time progress
 - Implement proper exit codes: 0 for success, 1 for user errors, 2 for system errors

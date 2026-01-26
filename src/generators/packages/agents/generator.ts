@@ -24,6 +24,8 @@ import {
   generateCursorCodeStyle,
   generateCursorGit,
 } from './templates/cursor/index.js';
+import { generateAgentsMd } from './templates/agents-md.js';
+import { generateClaudeMd } from './templates/claude-md.js';
 
 export interface AgentTemplateParams {
   config: ProjectConfig;
@@ -47,6 +49,20 @@ export class AgentRulesGenerator {
     await Promise.all([
       this.generateClaudeRules(),
       this.generateCursorRules(),
+      this.generateRootAgentFiles(),
+    ]);
+  }
+
+  private async generateRootAgentFiles(): Promise<void> {
+    await Promise.all([
+      fs.outputFile(
+        path.join(this.projectDir, 'AGENTS.md'),
+        generateAgentsMd(this.templateParams)
+      ),
+      fs.outputFile(
+        path.join(this.projectDir, 'CLAUDE.md'),
+        generateClaudeMd(this.templateParams)
+      ),
     ]);
   }
 
